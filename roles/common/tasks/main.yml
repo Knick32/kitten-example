@@ -1,0 +1,17 @@
+---
+- name: Install kitten packages
+  yum: 
+    state: present
+    name: "{{ kitten_packages }}"
+
+- git:
+    repo: https://github.com/ebartz/kitten-example
+    dest: /var/www/html
+    clone: yes
+    update: no
+
+- name: Rename Index file
+  command: mv /var/www/html/index.htm /var/www/html/index.html
+
+- name: Reboot System
+  command: systemctl restart httpd  

@@ -1,0 +1,15 @@
+---
+- name: webserver
+  hcloud_server:
+    name: apache1
+    image: centos-7
+    server_type: cx11
+    datacenter: nbg1-dc3
+    ssh_keys:
+    - root@TPKNICKELS2
+      
+- pause:
+    seconds: 60
+
+- name: refresh inventory
+  meta: refresh_inventory
